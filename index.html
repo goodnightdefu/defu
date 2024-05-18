@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>c̴̢͍͎͓̻͔̖͖̗͇͔̲͍̞̝̳̖͉̋̌̓̉̿̇͜o̸͉̖͇̱̺̠̯͊͗̍̾͘m̷̜̗͇̓͗͊͐̐͂̂͗̀̿̾͗̄̈́̚̕͝e̸̡̛͎̪̦̰̮͖̮͔̾̽̌̿̽̃̑̒̍̔̈͝͝ͅb̴̢̡̢͎͙̳̜̭̩͍̑́̇̅̿͆͌̏͠å̶̧̡̨̛͔̮̺̝̝̙̩̣̫̺͓͇̯̘͔͙̺͕̈́̆͒̽̀̇̽͒̏̓͐͆͐̃̀̅͑͛̿͝͠ͅc̸̨̧̨̛̛̻̝̭̱̭͖̘̰̻̙̜̟̪̠̹̯̼̰͇̎́̿̀͊͐̉̐̉̒͐̈́̊̚̚͝k̵͓̗͖̮͓̀</title>
+    <title>ḏ̶̡̢̣̫̼̠̣̟̞̜̰͈̼̻͎̝̑̀͜ͅͅr̵̨̢̡̮͈̬̤͔̥̞̳̰̙̩͚͉̀̋ḛ̸̭̥̤̰̞̺̝̈́͑͆͛͊̓͗́͗́͑̓͆͐̕͜͠a̵̤̰̹̬̙̦̒̈́̋m̵̡̗̥̪̜̬̯̟̘͔̣͉̙͚̭̤̲̯̮̪͉͆̎̑͐͆͋̿͌̑̽̈́̅̓̇̆͑̕ͅ</title>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
@@ -26,9 +26,14 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
         #whoami-logo {
+            position: absolute;
             width: 20vw; /* Responsive width */
             max-width: 100px; /* Maximum size */
             height: auto;
@@ -36,9 +41,13 @@
         }
 
         #lost-text {
+            position: absolute;
             font-style: italic;
             font-weight: bold;
             font-size: 2em;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
@@ -52,7 +61,45 @@
         window.onload = function() {
             const audio = document.getElementById('background-audio');
             const logo = document.getElementById('whoami-logo');
+            const container = document.getElementById('container');
 
+            let containerWidth = container.clientWidth;
+            let containerHeight = container.clientHeight;
+            let logoWidth = logo.clientWidth;
+            let logoHeight = logo.clientHeight;
+
+            let x = Math.random() * (containerWidth - logoWidth);
+            let y = Math.random() * (containerHeight - logoHeight);
+            let xSpeed = 1;  // Reduced speed for slower animation
+            let ySpeed = 1;  // Reduced speed for slower animation
+
+            function update() {
+                x += xSpeed;
+                y += ySpeed;
+
+                if (x + logoWidth >= containerWidth || x <= 0) {
+                    xSpeed = -xSpeed;
+                }
+                if (y + logoHeight >= containerHeight || y <= 0) {
+                    ySpeed = -ySpeed;
+                }
+
+                logo.style.left = x + 'px';
+                logo.style.top = y + 'px';
+
+                requestAnimationFrame(update);
+            }
+
+            update();
+
+            window.addEventListener('resize', () => {
+                containerWidth = container.clientWidth;
+                containerHeight = container.clientHeight;
+                logoWidth = logo.clientWidth;
+                logoHeight = logo.clientHeight;
+            });
+
+            // Add event listener to the PNG image to play the audio
             logo.addEventListener('click', function() {
                 audio.play().catch(error => {
                     console.error('Failed to play audio:', error);
