@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing DVD Logo</title>
+    <title>fantasy.</title>
     <style>
         body, html {
             margin: 0;
@@ -24,7 +24,7 @@
             overflow: hidden;
         }
 
-        #dvd-logo {
+        #whoami-logo {
             position: absolute;
             width: 20vw; /* Responsive width */
             max-width: 100px; /* Maximum size */
@@ -34,17 +34,17 @@
 </head>
 <body>
     <div id="container">
-        <img src="dvd_logo.png" id="dvd-logo" alt="DVD Logo">
+        <img src="whoami.png" id="whoami-logo" alt="">
     </div>
     <script>
         window.onload = function() {
             const container = document.getElementById('container');
-            const dvdLogo = document.getElementById('dvd-logo');
+            const whoamiLogo = document.getElementById('whoami-logo');
 
             let containerWidth = container.clientWidth;
             let containerHeight = container.clientHeight;
-            let logoWidth = dvdLogo.clientWidth;
-            let logoHeight = dvdLogo.clientHeight;
+            let logoWidth = whoamiLogo.clientWidth;
+            let logoHeight = whoamiLogo.clientHeight;
 
             let x = Math.random() * (containerWidth - logoWidth);
             let y = Math.random() * (containerHeight - logoHeight);
@@ -62,8 +62,8 @@
                     ySpeed = -ySpeed;
                 }
 
-                dvdLogo.style.left = x + 'px';
-                dvdLogo.style.top = y + 'px';
+                whoamiLogo.style.left = x + 'px';
+                whoamiLogo.style.top = y + 'px';
 
                 requestAnimationFrame(update);
             }
@@ -73,8 +73,8 @@
             window.addEventListener('resize', () => {
                 containerWidth = container.clientWidth;
                 containerHeight = container.clientHeight;
-                logoWidth = dvdLogo.clientWidth;
-                logoHeight = dvdLogo.clientHeight;
+                logoWidth = whoamiLogo.clientWidth;
+                logoHeight = whoamiLogo.clientHeight;
             });
         };
     </script>
