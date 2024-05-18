@@ -35,27 +35,22 @@
             height: auto;
         }
 
-        h1, p {
-            margin: 0;
-        }
-
-        p {
-            margin-top: 10px;
-            font-size: 1.2em;
+        #lost-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-style: italic;
+            font-weight: bold;
+            font-size: 2em;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>imagine.</h1>
-        <p>i care for you still and i will, forever.
-        i care for you still and i will, forever.
-        i care for you still and i will, forever.
-        i care for you still and i will, forever.
-        i care for you still and i will, forever.</p>
-    </div>
+    <audio src="whiteferrari.mp3" autoplay loop></audio>
     <div id="container">
         <img src="whoami.png" id="whoami-logo" alt="">
+        <div id="lost-text">lost.</div>
     </div>
     <script>
         window.onload = function() {
